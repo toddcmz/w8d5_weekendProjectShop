@@ -10,7 +10,7 @@ export default class User{
         private _id: string = uuid()
     ){}
 
-    static createNewUser(fullName:string, age:number){
+    createNewUser(fullName:string, age:number){
         if(fullName && age){
             return new User(fullName, age)
         }else{

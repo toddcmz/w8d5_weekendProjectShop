@@ -39,15 +39,16 @@ export default class Shop{
     }
 
     showItems(){
-        const shopUoList = document.querySelector('#ShopStockList')!
+        const shopUoList = document.querySelector('#shopStockList')!
         for(let ele of this.itemsInShop){
             const shopItem = document.createElement('div')
             shopItem.id = ele.id
             shopItem.innerText = `${ele.itemName}: ${ele.description} | $${ele.price}`
-            shopUoList.append(shopItem)
+            shopUoList.appendChild(shopItem)
             const addItemButton = document.createElement('button')
             addItemButton.id = ele.id
             addItemButton.innerText = 'Add to Cart'
+            shopItem.appendChild(addItemButton)
             this.addToCartEventListener(addItemButton, ele)
         }
     }
@@ -58,7 +59,7 @@ export default class Shop{
     }
 
     addToCartEventListener(someButton:HTMLButtonElement, someItem:Item){
-        someButton.addEventListener('click',()=>{
+        someButton.addEventListener('click', ()=>{
             if(this.myUser !== undefined){
             this.myUser.addToCart(someItem)
             }else{
