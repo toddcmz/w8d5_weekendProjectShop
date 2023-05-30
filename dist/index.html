@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Little Shoppe</title>
+</head>
+<body>
+    <nav class="myNav flexRowMe">
+        <div class="navPic">
+            <img class="navImg" src="./cart.png" alt="aCart">
+        </div>
+        <div class="navTitle">
+            <h2 class="navText">Shoppe 'Tile Youe Droppe</h2>
+        </div>
+    </nav>
+
+    <div class="mainContainer flexRowMe">
+        <div class="userContainer mainSubcontainer">
+            <h4>New Shopper Registration</h4>
+            <form action="" id="userForm">
+                <input type="text" name="Name" id="userName" placeholder = "Your Name">
+                <br><br>
+                <input type="text" name="Age" id="userAge" placeholder = "Your Age">
+                <br><br>
+                <input type="submit" value="Start Shopping">
+            </form>
+        </div>
+        <div class="shopContainer mainSubcontainer">
+            <h4>Items for Sale</h4>
+            <ul id="shopStockList"></ul>
+        </div>
+        <div class="cartContainer mainSubcontainer">
+            <h4>Your Cart</h4>
+            <ul id="userCartList"></ul>
+        </div>
+    </div>
+
+    <footer class="myFoot flexRowMe">
+        <div>place1</div>
+        <div>place2</div>
+        <div>place3</div>
+        <div>place4</div>
+    </footer>
+    <script src="./bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+body{
+    margin: 0px;
+}
+
+.flexRowMe{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.myNav{
+    height: 80px;
+    border-bottom: 2px maroon solid;
+    background: rgb(240, 230, 196);
+}
+
+h2{
+    margin-right: 10px;
+}
+
+.navImg{
+    height: 60px;
+    margin: 10px;
+}
+
+.mainContainer{
+    margin: 20px;
+}
+
+.mainSubcontainer{
+    width: 30vw;
+    border: 1px solid green;
+}
+
+ul{
+    padding: 0;
+    list-style-type: none;
+}
+
+.myFoot{
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 80px; 
+    background: rgb(240, 230, 196);
+    border-top: 2px maroon solid;
+}
