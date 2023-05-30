@@ -43,13 +43,14 @@ export default class Shop{
         for(let ele of this.itemsInShop){
             const shopItem = document.createElement('div')
             shopItem.id = ele.id
-            shopItem.innerText = `${ele.itemName}: ${ele.description} | $${ele.price}`
+            shopItem.innerHTML = `${ele.itemName}: ${ele.description} | $${ele.price}<br>`
             shopUoList.appendChild(shopItem)
             const addItemButton = document.createElement('button')
             addItemButton.id = ele.id
             addItemButton.innerText = 'Add to Cart'
             shopItem.appendChild(addItemButton)
             this.addToCartEventListener(addItemButton, ele)
+            
         }
     }
 

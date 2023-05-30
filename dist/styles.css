@@ -2,6 +2,10 @@ body{
     margin: 0px;
 }
 
+button{
+    margin-bottom: 15px;
+}
+
 .flexRowMe{
     display: flex;
     flex-direction: row;
