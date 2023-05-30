@@ -44,7 +44,7 @@ export default class User{
     }
 
     cartHTMLElement(){
-        const cartUoList = document.querySelector('#UserCartList')!
+        const cartUoList = document.querySelector('#userCartList')!
         for(let ele of this.cart){
             const cartItem = document.createElement('div')
             cartItem.id = ele.id

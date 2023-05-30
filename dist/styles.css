@@ -50,4 +50,5 @@ ul{
     height: 80px; 
     background: rgb(240, 230, 196);
     border-top: 2px maroon solid;
+    text-align: center;
 }

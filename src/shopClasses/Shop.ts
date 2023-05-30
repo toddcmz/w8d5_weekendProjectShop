@@ -61,8 +61,11 @@ export default class Shop{
 
     addToCartEventListener(someButton:HTMLButtonElement, someItem:Item){
         someButton.addEventListener('click', ()=>{
+            
             if(this.myUser !== undefined){
+            console.log(someItem,'testing click')
             this.myUser.addToCart(someItem)
+            console.log(this.myUser.cart)
             }else{
 
             }
