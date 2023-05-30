@@ -7,7 +7,7 @@ export default class User{
         private _fullName: string,
         private _age: number,
         private _cart: Item[] = [],
-        private _id: string = uuid()
+        private _id: string = uuid(),
     ){}
 
     createNewUser(fullName:string, age:number){
@@ -44,7 +44,12 @@ export default class User{
     }
 
     cartHTMLElement(){
-        const cartUoList = document.querySelector('#userCartList')!
+        const oldCartUoList = document.querySelector('#userCartList')!
+        oldCartUoList.remove()
+        const cartUoList = document.createElement('ul')
+        cartUoList.id = 'userCartList'
+        const cartContainer = document.getElementsByClassName('cartContainer')[0]
+        cartContainer.append(cartUoList)
         for(let ele of this.cart){
             const cartItem = document.createElement('div')
             cartItem.id = ele.id
@@ -68,14 +73,16 @@ export default class User{
         someButton.addEventListener('click',() =>{
             const thisDiv = document.getElementById(someButton.id)!
             thisDiv.remove()
+            this.removeQuantityFromCart(someButton.id,1)
         })
-        this.removeQuantityFromCart(someButton.id,1)
+        
     }
 
     addRemoveAllEventListener(someButton:HTMLButtonElement){
         someButton.addEventListener('click',() =>{
             const theseDivs = document.getElementsByClassName(someButton.id)!
-            for (let ele of theseDivs){
+            console.log(theseDivs)
+            for (let ele of Object.values(theseDivs)){
                 ele.remove()
             }
             this.removeFromCart(someButton.id)
@@ -83,12 +90,25 @@ export default class User{
     }
 
     addToCart(thisItem:Item):void{
+        console.log(thisItem, 'thing getting pushed to cart')
         this.cart.push(thisItem)
         this.cartHTMLElement()
+        this.updateCartTotal()
     }
     
+    updateCartTotal():void{
+        const lastCartTotal = document.querySelector('#currentCartTotal')!
+        lastCartTotal.remove()
+        const cartTotalValue = document.createElement('p')
+        cartTotalValue.innerText = `Current Total: ${this.cartTotal()}`
+        cartTotalValue.id = 'currentCartTotal'
+        const totalContainer = document.querySelector('#cartTotalContainer')!
+        totalContainer.appendChild(cartTotalValue)
+    }
+
     removeFromCart(thisItemName:string):void{
         this.cart = this.cart.filter(item => item.itemName !== thisItemName)
+        this.updateCartTotal()
     }
 
     removeQuantityFromCart(thisItemId:string, quantity:number):void{
@@ -99,7 +119,7 @@ export default class User{
             } // end if
         } // end get count of items for loop
         // if our count of items is less than or equal to removal quantity, run remove from cart
-        if (itemCount <= quantity){
+        if (itemCount < quantity){
             this.removeFromCart(thisItemId)
         }else{
             let countRemoved:number = 0
@@ -110,6 +130,7 @@ export default class User{
                     countRemoved +=1
                 } // end if
             }// end for - for each item in the cart
+            this.updateCartTotal()
         }// end handling removal if chain entirely
     }// end removeQuantityFromCart
 

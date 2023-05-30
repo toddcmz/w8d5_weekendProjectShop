@@ -5,6 +5,8 @@ const startShopping = document.querySelector('#userForm') as HTMLFormElement
 const nameField = document.querySelector('#userName') as HTMLInputElement
 const ageField = document.querySelector('#userAge') as HTMLInputElement
 
+
+
 const shopSession = new Shop()
 console.log(nameField.value, parseInt(ageField.value))
 

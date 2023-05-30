@@ -1,6 +1,6 @@
 import Item from './Item'
 import User from './User'
-
+import {v4 as uuid} from 'uuid'
 
 export default class Shop{
 
@@ -50,7 +50,6 @@ export default class Shop{
             addItemButton.innerText = 'Add to Cart'
             shopItem.appendChild(addItemButton)
             this.addToCartEventListener(addItemButton, ele)
-
         }
     }
 
@@ -61,11 +60,13 @@ export default class Shop{
 
     addToCartEventListener(someButton:HTMLButtonElement, someItem:Item){
         someButton.addEventListener('click', ()=>{
-            
+            //we actually need to use the info in someItem
+            // to generate a new item, and pass THAT Item
+            // into the cart, otherwise all the items have
+            // the same ID.
+            const itemForCart = new Item(someItem.itemName, someItem.price, someItem.description, uuid() )
             if(this.myUser !== undefined){
-            console.log(someItem,'testing click')
-            this.myUser.addToCart(someItem)
-            console.log(this.myUser.cart)
+                this.myUser.addToCart(itemForCart)
             }else{
 
             }
